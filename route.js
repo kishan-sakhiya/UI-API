@@ -1,7 +1,11 @@
 var express = require('express')
 var router = express.Router();
 
-router.get('/',(req,res)=>{
+var movie = require('./Model/movie')
+
+router.get('/movie', async(req, res) => {
+    var imovie = await movie.find();
+    res.send(imovie);
     res.sendFile("index.html",{root:__dirname});
 })
 
